@@ -156,8 +156,8 @@ function relax_mesh!(
         L0 = L0s[i]
 
         force = max(L0 - L, 0) * (p1 - p2) / L
-        node_forces[:, n1] += force
-        node_forces[:, n2] -= force
+        node_forces[:, n1] .+= force
+        node_forces[:, n2] .-= force
     end
     
     node_forces[:, 1:n_fixed_nodes] .= 0.0  # set movement of fixed nodes to zero
