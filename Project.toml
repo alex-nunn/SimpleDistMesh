@@ -1,0 +1,10 @@
+name = "SimpleDistMesh"
+uuid = "895d7746-41d9-400e-83f6-aa195a4e811c"
+authors = ["Alex <alex.nunn@pm.me>"]
+version = "0.1.0"
+
+[deps]
+DelaunayTriangulation = "927a84f5-c5f4-47a5-9785-b46e178433df"
+ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
