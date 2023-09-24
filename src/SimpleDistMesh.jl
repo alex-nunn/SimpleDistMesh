@@ -1,5 +1,7 @@
 module SimpleDistMesh
 
+using Plots
+using RecipesBase
 using DelaunayTriangulation
 using ForwardDiff
 using LinearAlgebra
@@ -252,6 +254,30 @@ function find_bars(d, geps, nodes)
         end
     end
     return stack(bar_set), stack(tri_set)
+end
+
+
+@recipe function recipe_mesh(mesh::Mesh)
+    aspect_ratio --> :equal
+
+    @series begin
+        label --> false
+        seriestype := :scatter
+        (mesh.nodes[1, :], mesh.nodes[2, :])
+    end
+
+    for tri ∈ eachcol(mesh.ts)
+        tri = [tri..., tri[1]]
+        @series begin
+            label --> false
+            seriestype := :path
+            fillcolor --> false
+            linewidth --> 1
+            linecolor --> palette(:tab10)[begin]
+
+            mesh.nodes[1, tri], mesh.nodes[2, tri]
+        end
+    end
 end
 
 end # module SimpleDistMesh
