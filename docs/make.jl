@@ -18,5 +18,5 @@ makedocs(
 )
 
 deploydocs(;
-    repo="github.com/alex-nunn/SimpleDistMesh.jl"
+    repo="github.com/alex-nunn/SimpleDistMesh.jl.git"
 )
