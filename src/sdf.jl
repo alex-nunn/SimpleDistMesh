@@ -157,9 +157,7 @@ Rotation about point `p0` counter-clockwise by angle `ϕ` (in radians)
 # Examples
 Rotate point about the origin by `π/2`
 ```
-julia> rot = Rotation(π/2)
-(::Rotation) (generic function with 1 method)
-julia> rot([1.0, 0.0])
+julia> Rotation(π/2)([1.0, 0.0])
 2-element Vector{Float64}:
  6.123233995736766e-17
  1.0

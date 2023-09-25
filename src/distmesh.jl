@@ -5,17 +5,6 @@ Mesh with node positions and triangulation `ts`
 
 The columns of the `nodes` matrix provide  the positions of points in the mesh, 
 while the triangles (or tetrahedra) of the mesh defined by the columns of `ts`.
-
-# Examples
-A mesh in 2D comprised of the single triangle (0, 0), (1, 0), (1, 1)
-
-julia> mesh = Mesh{Float64, 2}(
-            [ 
-                0.0 1.0 0.0
-                0.0 0.0 1.0
-            ],
-            [1; 2; 3]
-        )
 """
 struct Mesh
     nodes::Matrix  # positions of nodes
@@ -110,7 +99,7 @@ end
 """
     relax_mesh!(nodes, ts; ...)
 
-Perform one relaxation iteration on the `nodes` and mesh triangulation `ts and
+Perform one relaxation iteration on the `nodes` and mesh triangulation `ts` and
 return the maximum distance moved by an iterior node.
 """
 function relax_mesh!(

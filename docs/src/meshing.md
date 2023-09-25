@@ -2,13 +2,13 @@
 Pages=["meshing.md"]
 ```
 
-# Signed distance functions
-```@docs
-SimpleDistMesh
-```
-
+# Meshing functions
 
 ```@autodocs
 Modules=[SimpleDistMesh]
 Order=[:type, :function]
+```
+
+```@docs
+SimpleDistMesh
 ```
