@@ -1,5 +1,5 @@
 using Test
-using SimpleDistMesh
+using SimpleDistMesh.sdf
 
 @testset "Polygon" begin
     psqr = Polygon([
@@ -24,7 +24,6 @@ using SimpleDistMesh
     end
 
     @testset "distance" begin
-        @test sdf.distance(psqr, [-0.5, 0.1]) ≈ 0.1
+        @test sdf.distance(psqr, [-0.5, 0.1]) ≈ 0.5
     end
-
 end;
