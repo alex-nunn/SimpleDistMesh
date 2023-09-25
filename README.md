@@ -10,4 +10,5 @@ Some minor changes have been made to the MATLAB implementation to express the id
 
 ## References
 [1] [Persson, P. O., & Strang, G. (2004). A simple mesh generator in MATLAB. SIAM review, 46(2), 329-345.](https://doi.org/10.1137/S0036144503429121)
+
 [2] [Persson, P. O. (2005). Mesh generation for implicit geometries (Doctoral dissertation, Massachusetts Institute of Technology).](http://dspace.mit.edu/handle/1721.1/27866)
