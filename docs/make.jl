@@ -8,8 +8,14 @@ makedocs(
     sitename="SimpleDistMesh.jl",
     modules=[SimpleDistMesh],
     pages=[
-        "Home"=>"index.md"
-    ]
+        "Home"=>"index.md",
+        "Examples"=>"examples.md",
+        "Functions"=>[
+            "Meshing"=>"meshing.md",
+            "Signed distance functions"=>"signed_distance_functions.md"
+        ]
+    ],
+    #warnonly=true
 )
 
 #deploydocs(;

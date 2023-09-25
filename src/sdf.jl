@@ -1,16 +1,4 @@
-"""
-    Signed distance functions
-
-A collection of functions for creating signed distance functions for simple 
-geometries; circles, rectangles, polygons etc.
-
-# Examples
-```
-julia> c = Circle([0, 0], 1/2);  # circle about origin of radius 1/2
-julia> r = Rect(-1, 1, -1, 1);   # rectangle [-1, 1]×[-1, 1]
-julia> sdf = setdiff(r, c)       # signed distance function of square with hole
-```
-"""
+module sdf
 
 using LinearAlgebra
 export Circle, Rect, Rotation, Polygon
@@ -183,3 +171,5 @@ struct Rotation <: Function
     Rotation(ϕ, p0=[0.0, 0.0]) = new([cos(ϕ) -sin(ϕ); sin(ϕ) cos(ϕ)], p0)
 end
 (rot::Rotation)(pt::Vector) = rot.A * (pt - rot.p0) + rot.p0 
+
+end # module sdf
