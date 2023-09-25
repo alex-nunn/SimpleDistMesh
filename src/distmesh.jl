@@ -1,13 +1,3 @@
-using Plots
-using RecipesBase
-using DelaunayTriangulation
-using ForwardDiff
-using LinearAlgebra
-
-export Mesh, make_mesh, relax_mesh!, grid_uniform_triangles, rejection_method 
-export find_bars
-
-
 """
     Mesh
 
