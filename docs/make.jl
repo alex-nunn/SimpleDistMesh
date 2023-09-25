@@ -15,9 +15,8 @@ makedocs(
             "Signed distance functions"=>"signed_distance_functions.md"
         ]
     ],
-    #warnonly=true
 )
 
-#deploydocs(;
-#    repo="github.com/alex-nunn/SimpleDistMesh.jl"
-#)
+deploydocs(;
+    repo="github.com/alex-nunn/SimpleDistMesh.jl"
+)
