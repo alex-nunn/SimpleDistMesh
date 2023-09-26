@@ -6,7 +6,7 @@ A Julia implementation of [DistMesh](http://persson.berkeley.edu/distmesh/), a s
 
  Given the importance of mesh generation across a broad range of discplines, _"the ability to understand and adapt mesh generation code is too valuable an option to lose."_ [1] Thus, a motivation for the DistMesh algorithm is to provide a simple meshing algorithm capable of producing high quality meshes, easily understood and modified by newcomers. 
  
-In keeping with this goal our implementation sacrifices performance in favor of readability. Also, some minor changes have been made to the MATLAB implementation to express the ideas more idiomatically in Julia.
+In keeping with this goal our implementation sacrifices performance in favor of readability. Also, some minor changes have been made to the MATLAB implementation to express the ideas more idiomatically in Julia. For implementation details see [`src/distmesh.jl`](src/distmesh.jl) in this repository or, preferably, the original paper by Persson & Strang. [1]
 
 ## References
 [1] [Persson, P. O., & Strang, G. (2004). A simple mesh generator in MATLAB. SIAM review, 46(2), 329-345.](https://doi.org/10.1137/S0036144503429121)
