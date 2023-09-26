@@ -10,8 +10,8 @@ makedocs(
     pages=[
         "Home"=>"index.md",
         "Examples"=>"examples.md",
-        "Functions"=>[
-            "Meshing"=>"mesh.md",
+        "Reference"=>[
+            "Mesh"=>"mesh.md",
             "Signed distance functions"=>"signed_distance_functions.md"
         ]
     ],

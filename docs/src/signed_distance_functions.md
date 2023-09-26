@@ -12,11 +12,13 @@ Rect
 Polygon
 ```
 
+### Examples
 ```@example
-using SimpleDistMesh
+using SimpleDistMesh # hide
 c = Circle([0.0, 0.0], 1.0)
 ```
 
+---
 Signed distance functions can also be composed with coordinate transforms to define a range of different geoemtries. For convenience, we also provide a type for defining rotations.
 ```@docs
 Rotation
@@ -27,7 +29,7 @@ All of these are subtypes of the abstract type,
 SignedDistFunc
 ```
 ---
-
+### Combining regions
 The regions represented by signed distance can also be combined using common set operations of unions, intersections and set differences.
 
 ```@docs

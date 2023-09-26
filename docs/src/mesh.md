@@ -20,7 +20,7 @@ Mesh
 ```
 
 ---
-## Utilities
+### Utilities
 
 The following functions perform various steps of the `DistMesh` mesh relaxation algorithm.
 
