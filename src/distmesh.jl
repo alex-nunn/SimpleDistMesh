@@ -252,14 +252,14 @@ end
         (mesh.nodes[1, :], mesh.nodes[2, :])
     end
 
-    for tri ∈ eachcol(mesh.ts)
+    for tri ∈ eachcol(mesh.triangulation)
         tri = [tri..., tri[1]]
         @series begin
             label --> false
             seriestype := :path
             fillcolor --> false
             linewidth --> 1
-            linecolor --> palette(:tab10)[begin]
+            linecolor --> "#1F77B4"
 
             mesh.nodes[1, tri], mesh.nodes[2, tri]
         end
