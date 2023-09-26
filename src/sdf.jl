@@ -1,3 +1,4 @@
+import Base.show
 using LinearAlgebra
 
 """
@@ -42,6 +43,7 @@ struct Circle <: SignedDistFunc
     r
 end
 (c::Circle)(pt) = norm(pt - c.p0) - c.r
+Base.show(io::IO, ::MIME"text/plain", c::Circle) = print(io, "Circle($(c.p0), $(c.r))")
 
 
 # ------------------------------------------------------------------------------
@@ -59,6 +61,7 @@ struct Rect <: SignedDistFunc
     y2
 end
 (r::Rect)(pt) = -min(-r.y1+pt[2], r.y2-pt[2], -r.x1 + pt[1], r.x2 - pt[1])
+Base.show(io::IO, ::MIME"text/plain", r::Rect) = print(io, "Rect([$(r.x1), $(r.x2)]×[$(r.y1), $(r.y2)])")
 
 
 # ------------------------------------------------------------------------------
@@ -73,14 +76,17 @@ matrix
 # Examples
 Create signed distance function for a triangle
 ```
-julia> tri = Polygon([0 1 0; 0 0 1])
-(::Polygon) (generic function with 1 method)
+julia> triangle = Polygon([0 1 0; 0 0 1])
+Polygon([0, 0], [1, 0], [0, 1])
 ```
 """
 struct Polygon <: SignedDistFunc
     nodes::Matrix
 end
 (poly::Polygon)(x::AbstractVector) = (x ∈ poly ? -1 : 1) * distance(poly, x)
+Base.show(io::IO, ::MIME"text/plain", p::Polygon) = begin
+    print(io, "Polygon($(join(eachcol(p.nodes), ", ")))")
+end
 
 """
     distance(poly, x)
