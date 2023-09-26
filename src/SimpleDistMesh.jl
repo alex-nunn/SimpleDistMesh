@@ -11,7 +11,7 @@ using ForwardDiff
 using LinearAlgebra
 
 export Mesh
-export make_mesh, relax_mesh!, grid_uniform_triangles, rejection_method
+export Circle, Rect, Rotation, Polygon
 
 include("distmesh.jl")
 include("sdf.jl")

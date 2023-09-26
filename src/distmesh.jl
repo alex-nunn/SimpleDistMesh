@@ -1,14 +1,16 @@
 """
     Mesh
 
-Mesh with node positions and triangulation `ts`
+Mesh containing `nodes` positions and triangulation
 
-The columns of the `nodes` matrix provide  the positions of points in the mesh, 
-while the triangles (or tetrahedra) of the mesh defined by the columns of `ts`.
+# Properties
+- `nodes::Matrix` (2, n_nodes) 2-dimensional position of nodes
+- `triangulation::Matrix{Int}` (3, n_edges) node indices defining the triangles
+    of the mesh
 """
 struct Mesh
-    nodes::Matrix  # positions of nodes
-    ts::Matrix     # triangulation
+    nodes::Matrix             # positions of nodes
+    triangulation::Matrix     # connections between nodes
 end
 
 
@@ -31,16 +33,16 @@ columns of `fixed_nodes`.
     `bounds = [x_min y_min; x_max y_max]`
 
 # Keyword Arguments
-- `Fscale` internal pressure of relaxation method
 - `fixed_nodes::Matrix` defines fixed points of the mesh (if any)
-- `Δt` time-step of Euler method for point relaxation
-- `geps` tolerance in geometry calculations
-- `dptol` stopping criterion for relaxation method. Terminate if all node 
-    advections move less than `dptol`.
+- `Fscale` internal pressure of relaxation method (default: 1.2)
+- `Δt` time-step of Euler method for point relaxation (default: 0.2)
+- `geps` tolerance in geometry calculations (default: 0.001 h0)
+- `dptol` stopping criterion for relaxation method. Terminate if all nodes 
+    move less than `dptol` in a single iteration. (default: 0.001)
 - `ttol` for computational efficiency, triangulations are not computed at every
     step of the mesh relaxation. Recompute the mesh triangulation if a point has
-    moved by at least `ttol` since last triangulation.
-- `max_iters` maximum number of iterations
+    moved by at least `ttol` since last triangulation. (default: 0.1)
+- `max_iters` maximum number of iterations (default: 1000)
 
 # Outputs
 Returns a `Mesh`
@@ -69,7 +71,7 @@ function Mesh(
     
     # Relaxation procedure
     prev_nodes = copy(nodes)
-    bars, ts = find_bars(d, geps, nodes) # Compute bar connections between nodes
+    bars, triangulation = find_bars(d, geps, nodes) # Compute bar connections between nodes
 
     for i ∈ 1:max_iters
         # Retriangulation by the Delaunay algorithm
@@ -77,7 +79,7 @@ function Mesh(
         Δ = maximum(norm.(eachcol(nodes - prev_nodes))) / h0
         if Δ > ttol
             prev_nodes[:] .= nodes[:]
-            bars, ts = find_bars(d, geps, nodes)
+            bars, triangulation = find_bars(d, geps, nodes)
         end
 
         # Update node positions 
@@ -86,21 +88,21 @@ function Mesh(
         # Termination criterion
         if δinterior < dptol * h0
             println("Successfully converged after $i iterations.")
-            return Mesh(nodes, ts)
+            return Mesh(nodes, triangulation)
         end
     end
 
     println("Maximum number of iterations reached. Terminating.")
 
-    return Mesh(nodes, ts)
+    return Mesh(nodes, triangulation)
 end
 
 
 """
-    relax_mesh!(nodes, ts; ...)
+    relax_mesh!(nodes, bars; ...)
 
-Perform one relaxation iteration on the `nodes` and mesh triangulation `ts` and
-return the maximum distance moved by an iterior node.
+Move the nodes of the mesh according the forces between nodes, and return the 
+maximum distance moved by an iterior node.
 """
 function relax_mesh!(
         nodes::Matrix{T}, bars; 
@@ -167,8 +169,7 @@ end
 """
     grid_uniform_triangles(bounds, h0)
 
-Return nodes of a uniform grid of equilaterial triangles with side-length `h0`. 
-Nodes are returned as a vector of vectors.
+Return the nodes for a grid of equilaterial triangles with side-length `h0`. 
 """
 function grid_uniform_triangles(bounds, h0)
     xs = range(bounds[:, 1]...; step=h0)
@@ -188,7 +189,7 @@ end
 """
     rejection_method(d, h, nodes)
 
-Return subject of nodes inside the domain which pass the rejection method
+Return interior nodes which pass the rejection method
 """
 function rejection_method(d, h, geps, nodes)
     idxs = []
@@ -210,9 +211,15 @@ end
 """
     find_bars(d, geps, nodes)
 
-Return the bars which connect the `nodes` of the mesh using Delaunay 
-triangulation and geometrical tolerance `geps`. The bars are defined by the 
-columns the returned matrix.
+Using a Delaunay triangulation return the bars connecting the `nodes` of the 
+mesh and the indices of the mesh triangles
+
+# Output
+`(bars, triangulation)`
+
+- `bars::Matrix{Int}` (2, n_edges) indices of nodes defining bar connections
+- `triangulation::Matrix{Int}` (3, n_triangles) indices of nodes defining the
+    triangles of the mesh
 """
 function find_bars(d, geps, nodes)
     tri = triangulate(nodes)  # compute Delaunay triangulation
@@ -235,7 +242,7 @@ function find_bars(d, geps, nodes)
     return stack(bar_set), stack(tri_set)
 end
 
-
+# Recpie for plotting mesh objects
 @recipe function recipe_mesh(mesh::Mesh)
     aspect_ratio --> :equal
 

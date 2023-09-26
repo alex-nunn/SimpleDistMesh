@@ -1,7 +1,4 @@
-module sdf
-
 using LinearAlgebra
-export Circle, Rect, Rotation, Polygon
 
 """
     SignedDistFunc
@@ -134,6 +131,11 @@ function winding_number(poly::Polygon, x::AbstractVector)
     return Γ
 end
 
+"""
+    in(x::Vector, poly::Polygon)
+
+Return true if point `x` is inside polygon `poly`
+"""
 Base.in(x::AbstractVector, poly::Polygon) = isodd(winding_number(poly, x))
 
 """
@@ -169,5 +171,3 @@ struct Rotation <: Function
     Rotation(ϕ, p0=[0.0, 0.0]) = new([cos(ϕ) -sin(ϕ); sin(ϕ) cos(ϕ)], p0)
 end
 (rot::Rotation)(pt::Vector) = rot.A * (pt - rot.p0) + rot.p0 
-
-end # module sdf

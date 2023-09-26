@@ -11,7 +11,7 @@ makedocs(
         "Home"=>"index.md",
         "Examples"=>"examples.md",
         "Functions"=>[
-            "Meshing"=>"meshing.md",
+            "Meshing"=>"mesh.md",
             "Signed distance functions"=>"signed_distance_functions.md"
         ]
     ],
