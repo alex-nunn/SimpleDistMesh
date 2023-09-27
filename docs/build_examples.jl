@@ -7,7 +7,7 @@ using Plots.Measures
 using LinearAlgebra
 
 # Setup export 
-assets_dir = joinpath(Base.source_dir(), "assets")
+assets_dir = joinpath(Base.source_dir(), "src", "assets")
 fig_ouput = (p, name) -> savefig(p, joinpath(assets_dir, name))
 mkpath(assets_dir)
 

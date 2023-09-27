@@ -21,7 +21,7 @@ end
 
 
 """
-    Mesh(d, h, h0, bounds, fixed_nodes; ...)
+    Mesh(d, h, h0, bounds; ...)
 
 Construct a mesh using the signed distance function `d` and desired edge length
 function `h`. 
