@@ -45,6 +45,7 @@ intersect
 To create signed distance functions for polygonal geometries we define several useful functions.
 
 ```@docs
+implicit_project
 distance
 winding_number
 in
