@@ -262,6 +262,8 @@ end
     @series begin
         label --> false
         seriestype := :scatter
+        markercolor --> "#1F77B4"
+
         (mesh.nodes[1, :], mesh.nodes[2, :])
     end
 end
