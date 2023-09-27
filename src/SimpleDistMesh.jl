@@ -11,7 +11,7 @@ using ForwardDiff
 using LinearAlgebra
 
 export Mesh
-export Circle, Rect, Rotation, Polygon
+export Circle, Rect, Rotation, Polygon, ImplicitRegion
 
 include("distmesh.jl")
 include("sdf.jl")

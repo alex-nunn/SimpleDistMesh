@@ -1,6 +1,8 @@
 import Base.show
 using LinearAlgebra
-using NLsolve
+using ForwardDiff
+using DiffResults
+using StaticArrays
 
 """
     SignedDistFunc
@@ -73,7 +75,7 @@ Base.show(io::IO, ::MIME"text/plain", r::Rect) = print(io, "Rect([$(r.x1), $(r.x
 
 Signed distance function for the implicit region defined by `f(x) = 0`
 """
-struct ImplicitRegion
+struct ImplicitRegion <: SignedDistFunc
     f::Function
 end
 
@@ -82,9 +84,41 @@ end
 region defined by `f(x) = c`
 """
 ImplicitRegion(f, c) = ImplicitRegion(x -> f(x) - c)
-(ir::ImplicitRegion)(x0) = begin
-    x = nlsolve(ir.f, x0; autodiff=:forward).zero
-    return sign(ir.f(x0) * norm(x - x0))
+(region::ImplicitRegion)(x0) = begin
+    x = implicit_project(region.f, x0)
+    return sign(region.f(x0)) * norm(x - x0)
+end
+
+function implicit_project(f, x0; max_iters=1000, α=1.0)
+    # Allocate memory
+    L = zeros(MVector{2})
+    Δx = zeros(MVector{2})
+    J = zeros(MMatrix{2, 2})
+    H = zeros(MMatrix{2, 2})
+    dr = DiffResults.HessianResult(x0)
+    hconf = ForwardDiff.HessianConfig(f, dr, x0)
+
+    x = x0
+    for i ∈ 1:max_iters
+        ForwardDiff.hessian!(dr, f, x, hconf)
+        ∇fx, ∇fy = DiffResults.gradient(dr)
+
+        L[1] = DiffResults.value(dr)
+        L[2] = (x[1] - x0[1]) * ∇fy - (x[2] - x0[2]) * ∇fx
+
+        H .= DiffResults.hessian(dr)
+        J[1, 1] = ∇fx
+        J[1, 2] = ∇fy
+        J[2, 1] = ∇fy + (x[1] - x0[1]) * H[1, 2] - (x[2] - x0[2]) * H[1, 1]
+        J[2, 2] = -∇fx - (x[2] - x0[2]) * H[2, 1]  + (x[1] - x0[1]) * H[2, 2]
+
+        Δx .= inv(J) * L
+        if (Δx[1]^2 + Δx[2]^2) < 1e-8
+            break
+        end
+        @. x -= α * Δx
+    end
+    return x
 end
 
 
