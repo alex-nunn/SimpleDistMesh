@@ -246,12 +246,6 @@ end
 @recipe function recipe_mesh(mesh::Mesh)
     aspect_ratio --> :equal
 
-    @series begin
-        label --> false
-        seriestype := :scatter
-        (mesh.nodes[1, :], mesh.nodes[2, :])
-    end
-
     for tri ∈ eachcol(mesh.triangulation)
         tri = [tri..., tri[1]]
         @series begin
@@ -263,5 +257,11 @@ end
 
             mesh.nodes[1, tri], mesh.nodes[2, tri]
         end
+    end
+
+    @series begin
+        label --> false
+        seriestype := :scatter
+        (mesh.nodes[1, :], mesh.nodes[2, :])
     end
 end
