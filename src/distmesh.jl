@@ -1,3 +1,9 @@
+using FiniteDiff
+using RecipesBase
+using DelaunayTriangulation
+using ForwardDiff
+using LinearAlgebra
+
 """
     Mesh
 
@@ -34,7 +40,7 @@ columns of `fixed_nodes`.
 
 # Keyword Arguments
 - `gradient` function with signature `gradient(d, x)` returning the gradient at
-        x (default: ForwardDiff.gradient)
+        x (default: `FiniteDiff.finite_difference_gradient`)
 - `fixed_nodes::Matrix` defines fixed points of the mesh (if any)
 - `Fscale` internal pressure of relaxation method (default: 1.2)
 - `Δt` time-step of Euler method for point relaxation (default: 0.2)
@@ -54,7 +60,7 @@ function Mesh(
         h::Function, 
         h0::Real,
         bounds;
-        gradient=ForwardDiff.gradient,
+        gradient=FiniteDiff.finite_difference_gradient,
         fixed_nodes=Matrix{Float64}(undef, 2, 0),
         fscale::Real=1.2,
         Δt::Real=0.2,
