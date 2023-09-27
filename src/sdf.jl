@@ -89,16 +89,23 @@ ImplicitRegion(f, c) = ImplicitRegion(x -> f(x) - c)
     return sign(region.f(x0)) * norm(x - x0)
 end
 
+"""
+    implicit_project(f, x0; max_iters, α)
+
+Return the projection of `x0` onto the level set `f(x) = 0` such that the
+displacement from `x0` is parallel to the gradient, `(x - x0) ⋅ ∇f(x) = 0`
+"""
 function implicit_project(f, x0; max_iters=1000, α=1.0)
     # Allocate memory
     L = zeros(MVector{2})
     Δx = zeros(MVector{2})
     J = zeros(MMatrix{2, 2})
     H = zeros(MMatrix{2, 2})
+    x = zeros(2)
     dr = DiffResults.HessianResult(x0)
     hconf = ForwardDiff.HessianConfig(f, dr, x0)
 
-    x = x0
+    x .= x0
     for i ∈ 1:max_iters
         ForwardDiff.hessian!(dr, f, x, hconf)
         ∇fx, ∇fy = DiffResults.gradient(dr)
@@ -113,10 +120,10 @@ function implicit_project(f, x0; max_iters=1000, α=1.0)
         J[2, 2] = -∇fx - (x[2] - x0[2]) * H[2, 1]  + (x[1] - x0[1]) * H[2, 2]
 
         Δx .= inv(J) * L
+        @. x -= α * Δx
         if (Δx[1]^2 + Δx[2]^2) < 1e-8
             break
         end
-        @. x -= α * Δx
     end
     return x
 end
