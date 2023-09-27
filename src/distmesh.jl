@@ -33,6 +33,8 @@ columns of `fixed_nodes`.
     `bounds = [x_min y_min; x_max y_max]`
 
 # Keyword Arguments
+- `gradient` function with signature `gradient(d, x)` returning the gradient at
+        x (default: ForwardDiff.gradient)
 - `fixed_nodes::Matrix` defines fixed points of the mesh (if any)
 - `Fscale` internal pressure of relaxation method (default: 1.2)
 - `Δt` time-step of Euler method for point relaxation (default: 0.2)
@@ -52,6 +54,7 @@ function Mesh(
         h::Function, 
         h0::Real,
         bounds;
+        gradient=ForwardDiff.gradient,
         fixed_nodes=Matrix{Float64}(undef, 2, 0),
         fscale::Real=1.2,
         Δt::Real=0.2,
@@ -71,7 +74,9 @@ function Mesh(
     
     # Relaxation procedure
     prev_nodes = copy(nodes)
-    bars, triangulation = find_bars(d, geps, nodes) # Compute bar connections between nodes
+
+    # Compute bar connections between nodes
+    bars, triangulation = find_bars(d, geps, nodes) 
 
     for i ∈ 1:max_iters
         # Retriangulation by the Delaunay algorithm
@@ -83,7 +88,9 @@ function Mesh(
         end
 
         # Update node positions 
-        δinterior = relax_mesh!(nodes, bars; d, h, n_fixed_nodes, fscale, Δt)
+        δinterior = relax_mesh!(
+            nodes, bars; d, h, n_fixed_nodes, gradient, fscale, Δt
+        )
 
         # Termination criterion
         if δinterior < dptol * h0
@@ -106,7 +113,7 @@ maximum distance moved by an iterior node.
 """
 function relax_mesh!(
         nodes::Matrix{T}, bars; 
-        d, h, n_fixed_nodes, fscale, Δt
+        d, h, n_fixed_nodes, gradient, fscale, Δt
         ) where T <: Real
     
     # 6. Move mesh points bar on bar lengths Ls and forces `node_forces`
@@ -156,7 +163,7 @@ function relax_mesh!(
 
         # Is node outside domain?
         if d0 > 0
-            nodes[:, i] -= d0 * ForwardDiff.gradient(d, node)
+            nodes[:, i] -= d0 * gradient(d, node)
         else
             δ = Δt * norm(node_forces[:, i])
             δinterior = max(δinterior, δ)
