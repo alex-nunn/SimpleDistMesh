@@ -1,2 +1,103 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Examples · SimpleDistMesh.jl</title><meta name="title" content="Examples · SimpleDistMesh.jl"/><meta property="og:title" content="Examples · SimpleDistMesh.jl"/><meta property="twitter:title" content="Examples · SimpleDistMesh.jl"/><meta name="description" content="Documentation for SimpleDistMesh.jl."/><meta property="og:description" content="Documentation for SimpleDistMesh.jl."/><meta property="twitter:description" content="Documentation for SimpleDistMesh.jl."/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">SimpleDistMesh.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li class="is-active"><a class="tocitem" href>Examples</a></li><li><span class="tocitem">Reference</span><ul><li><a class="tocitem" href="../mesh/">Mesh</a></li><li><a class="tocitem" href="../signed_distance_functions/">Signed distance functions</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Examples</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Examples</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/alex-nunn/SimpleDistMesh" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/alex-nunn/SimpleDistMesh/blob/main/docs/src/examples.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Examples"><a class="docs-heading-anchor" href="#Examples">Examples</a><a id="Examples-1"></a><a class="docs-heading-anchor-permalink" href="#Examples" title="Permalink"></a></h1></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../mesh/">Mesh »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.0.1 on <span class="colophon-date" title="Wednesday 27 September 2023 04:27">Wednesday 27 September 2023</span>. Using Julia version 1.9.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Examples · SimpleDistMesh.jl</title><meta name="title" content="Examples · SimpleDistMesh.jl"/><meta property="og:title" content="Examples · SimpleDistMesh.jl"/><meta property="twitter:title" content="Examples · SimpleDistMesh.jl"/><meta name="description" content="Documentation for SimpleDistMesh.jl."/><meta property="og:description" content="Documentation for SimpleDistMesh.jl."/><meta property="twitter:description" content="Documentation for SimpleDistMesh.jl."/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">SimpleDistMesh.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li class="is-active"><a class="tocitem" href>Examples</a><ul class="internal"><li><a class="tocitem" href="#Increasing-discretization"><span>Increasing discretization</span></a></li><li class="toplevel"><a class="tocitem" href="#Combining-regions"><span>Combining regions</span></a></li><li><a class="tocitem" href="#Complex-geometries-and-adaptive-element-sizes"><span>Complex geometries &amp; adaptive element sizes</span></a></li><li><a class="tocitem" href="#Implicit-geometries"><span>Implicit geometries</span></a></li><li><a class="tocitem" href="#All-together-now!"><span>All together now!</span></a></li><li><a class="tocitem" href="#References"><span>References</span></a></li></ul></li><li><span class="tocitem">Reference</span><ul><li><a class="tocitem" href="../mesh/">Mesh</a></li><li><a class="tocitem" href="../signed_distance_functions/">Signed distance functions</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Examples</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Examples</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/alex-nunn/SimpleDistMesh" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/alex-nunn/SimpleDistMesh/blob/main/docs/src/examples.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Examples"><a class="docs-heading-anchor" href="#Examples">Examples</a><a id="Examples-1"></a><a class="docs-heading-anchor-permalink" href="#Examples" title="Permalink"></a></h1><p>These examples are derived from the original DistMesh paper by Persson &amp; Strang. [1] </p><h2 id="Increasing-discretization"><a class="docs-heading-anchor" href="#Increasing-discretization">Increasing discretization</a><a id="Increasing-discretization-1"></a><a class="docs-heading-anchor-permalink" href="#Increasing-discretization" title="Permalink"></a></h2><p>The initial element size parameter <code>h0</code> and the desired element size distribution <code>h(x)</code> control the level of mesh discretization.</p><pre><code class="language-julia hljs">d = Circle([0.0, 0.0], 1)  # create signed distance function
+h = x -&gt; 1.0               # element-size distribution
+bounds = [-1 -1; 1 1]      # bounds for initial node distributino
+
+h0s = [0.4, 0.2, 0.1]      # initial element sizes
+meshes = [Mesh(d, h, h0, bounds) for h0 ∈ h0s]</code></pre><p><img src="../assets/01_disks.png" alt/></p><h1 id="Combining-regions"><a class="docs-heading-anchor" href="#Combining-regions">Combining regions</a><a id="Combining-regions-1"></a><a class="docs-heading-anchor-permalink" href="#Combining-regions" title="Permalink"></a></h1><p>The regions represented by signed distance functions can easily be combined by taking unions, intersections and differences. In practice this is done by taking the minimum and maximum of a collection of signed distance functions</p><p class="math-container">\[\begin{aligned}
+(d_1 \cup d_2)(x) &amp;= \min \{ d_1(x), \, d_2(x) \},\\
+(d_1 \cap d_2)(x) &amp;= \max \{ d_1(x), \, d_2(x) \},\\
+(d_1 \\ d_2)(x) &amp;= \max \{ d_1(x), \, -d_2(x) \}
+\end{aligned}\]</p><p>In practice, you can use the operators <code>∪</code>, <code>∩</code> and <code>setdiff</code> to combine signed distance functions.</p><p><strong>Circular annulus,</strong></p><pre><code class="language-julia hljs">c_outer = Circle([0.0, 0.0], 1)
+c_inner = Circle([0.0, 0.0], 0.3)
+d = setdiff(c_outer, c_inner)
+h = x -&gt; 1.0
+h0 = 0.1
+bounds = [-1 -1; 1 1]
+mesh1 = Mesh(d, h, h0, bounds)</code></pre><p><strong>Square with a hole,</strong></p><pre><code class="language-julia hljs">square = Rect(-1, 1, -1, 1)
+hole = Circle([0.0, 0.0], 0.3)
+d = setdiff(square, hole)
+h = x -&gt; 1.0
+h0 = 0.15
+bounds = [-1 -1; 1 1]
+fixed_nodes = [-1 -1 1 1; -1 1 -1 1]
+mesh2 = Mesh(d, h, h0, bounds; fixed_nodes)</code></pre><p><strong>Square with a hole and adaptive element sizing,</strong></p><pre><code class="language-julia hljs">square = Rect(-1, 1, -1, 1)
+hole = Circle([0.0, 0.0], 0.4)
+d = setdiff(square, hole)
+h = x -&gt; min(0.2 + norm(x) - 0.4, 1)
+h0 = 0.05
+bounds = [-1 -1; 1 1]
+fixed_nodes = [-1 -1 1 1; -1 1 -1 1]
+mesh3 = Mesh(d, h, h0, bounds; fixed_nodes)</code></pre><p><img src="../assets/02_combining_regions.png" alt/></p><h2 id="Complex-geometries-and-adaptive-element-sizes"><a class="docs-heading-anchor" href="#Complex-geometries-and-adaptive-element-sizes">Complex geometries &amp; adaptive element sizes</a><a id="Complex-geometries-and-adaptive-element-sizes-1"></a><a class="docs-heading-anchor-permalink" href="#Complex-geometries-and-adaptive-element-sizes" title="Permalink"></a></h2><p><strong>Making hexagons,</strong></p><pre><code class="language-julia hljs">hexagon = (;l, ϕ0) -&gt; Polygon(
+    stack((l * cos(ϕ), l * sin(ϕ)) for ϕ ∈ ϕ0 .+ range(0, 2π, 7)[begin:end-1])
+)
+
+outer_hexagon = hexagon(l=1.0, ϕ0=0)
+inner_hexagon = hexagon(l=0.5, ϕ0=π/6)
+
+d = setdiff(outer_hexagon, inner_hexagon)
+h = x -&gt; 1
+h0 = 0.1
+bounds = transpose(stack(extrema(outer_hexagon.nodes; dims=2);dims=1))
+fixed_nodes = inner_hexagon.nodes
+
+mesh1 = Mesh(d, h, h0, bounds; fixed_nodes)</code></pre><p><strong>Adapting element sizes to geometry,</strong></p><pre><code class="language-julia hljs">upper_half_plane = x -&gt; -x[2]
+d1 = Circle([0, 0], 1)
+d2 = Circle([-0.4, 0.0], 0.55)
+d = setdiff(d1, d2) ∩ upper_half_plane
+
+h1 = x -&gt; 0.15 - 0.2d1(x)
+h2 = x -&gt; 0.06 + 0.2d2(x)
+h3 = x -&gt; (d2(x) - d1(x)) / 3
+
+h = x -&gt; min(h1(x), h2(x), h3(x))
+h0 = 0.05 / 3
+bounds = [-1 0; 1 1]
+fixed_nodes = [
+    -1.0 -0.95 0.15 1.0
+     0.0  0.00 0.00 0.0
+]
+
+mesh2 = Mesh(d, h, h0, bounds; fixed_nodes)</code></pre><p><img src="../assets/03_complex_geometries.png" alt/></p><h2 id="Implicit-geometries"><a class="docs-heading-anchor" href="#Implicit-geometries">Implicit geometries</a><a id="Implicit-geometries-1"></a><a class="docs-heading-anchor-permalink" href="#Implicit-geometries" title="Permalink"></a></h2><p><strong>Meshing super-ellipses,</strong></p><pre><code class="language-julia hljs">d = setdiff(
+    ImplicitRegion(x -&gt; norm(x, 4) - 1),
+    ImplicitRegion(x -&gt; norm(x, 4) - 0.5)
+)
+
+h = x -&gt; 1
+h0 = 0.1
+bounds = [-1 -1; 1 1]
+
+mesh1 = Mesh(d, h, h0, bounds)</code></pre><p><strong>Weird implicit regions,</strong></p><pre><code class="language-julia hljs">d = ImplicitRegion(x -&gt; x[2] - cos(x[1])) ∩ ImplicitRegion(x -&gt; -x[2] + 5((2 * x[1] / (5π))^4 - 1))
+h = x -&gt; 1
+h0 = 0.6
+bounds = [-5π/2 -5; 5π/2 1]
+fixed_nodes = [-5π/2 5π/2; 0 0]
+
+mesh2 = Mesh(d, h, h0, bounds; fixed_nodes)</code></pre><p><img src="../assets/04_complex_geometries.png" alt/></p><h2 id="All-together-now!"><a class="docs-heading-anchor" href="#All-together-now!">All together now!</a><a id="All-together-now!-1"></a><a class="docs-heading-anchor-permalink" href="#All-together-now!" title="Permalink"></a></h2><p>All of these techniques can be combined to create the mesh of your dreams, 😴❤️❤️</p><pre><code class="language-julia hljs">r = norm([-4, 0] - [1.0, 0.5])
+ϕ = atan(1.5, 5)
+
+d1 = Polygon([
+    -4.0  1.0  1.0  0.0  1.0  1.0
+     0.0  1.5  0.5  0.0 -0.5 -1.5
+]) ∩ Circle([-4, 0], r)
+d2 = Circle([-1.0, 0.0], 0.5)
+
+
+d = setdiff(d1, d2)
+h1 = x -&gt; clamp(0.7norm(x), 0.1, 0.8)
+h2 = x -&gt; 0.2 + d2(x)
+h = x -&gt; min(h1(x), h2(x))
+
+h0 = 0.03
+bounds = [-4 -1.5; 1 1.5]
+
+fixed_nodes = stack([
+    [-4.0, 0.0],
+    [1.0, 0.5],
+    [1.0, -0.5],
+    [0.0, 0.0],
+    [r * cos(ϕ) - 4, r * sin(ϕ)],
+    [r * cos(ϕ) - 4, -r * sin(ϕ)]
+])
+
+mesh = Mesh(d, h, h0, bounds; fixed_nodes)</code></pre><p><img src="../assets/05_all_together_now.png" alt/></p><h2 id="References"><a class="docs-heading-anchor" href="#References">References</a><a id="References-1"></a><a class="docs-heading-anchor-permalink" href="#References" title="Permalink"></a></h2><p>[1] <a href="https://doi.org/10.1137/S0036144503429121">Persson, P. O., &amp; Strang, G. (2004). A simple mesh generator in MATLAB. SIAM review, 46(2), 329-345.</a></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><a class="docs-footer-nextpage" href="../mesh/">Mesh »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.0.1 on <span class="colophon-date" title="Wednesday 27 September 2023 18:35">Wednesday 27 September 2023</span>. Using Julia version 1.9.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
