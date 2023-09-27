@@ -10,6 +10,8 @@ A signed distance function, $d(x)$, can be any scalar function in 2-dimensions f
 Circle
 Rect
 Polygon
+ImplicitRegion
+ImplicitRegion(f::Function, c)
 ```
 
 ### Examples

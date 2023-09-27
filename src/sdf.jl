@@ -1,5 +1,6 @@
 import Base.show
 using LinearAlgebra
+using NLsolve
 
 """
     SignedDistFunc
@@ -62,6 +63,29 @@ struct Rect <: SignedDistFunc
 end
 (r::Rect)(pt) = -min(-r.y1+pt[2], r.y2-pt[2], -r.x1 + pt[1], r.x2 - pt[1])
 Base.show(io::IO, ::MIME"text/plain", r::Rect) = print(io, "Rect([$(r.x1), $(r.x2)]×[$(r.y1), $(r.y2)])")
+
+
+# ------------------------------------------------------------------------------
+# Implicit region
+# ------------------------------------------------------------------------------
+"""
+    ImplicitRegion(f)
+
+Signed distance function for the implicit region defined by `f(x) = 0`
+"""
+struct ImplicitRegion
+    f::Function
+end
+
+"""
+`ImplicitRegion(f, c)` returns a signed distance function for the implicit
+region defined by `f(x) = c`
+"""
+ImplicitRegion(f, c) = ImplicitRegion(x -> f(x) - c)
+(ir::ImplicitRegion)(x0) = begin
+    x = nlsolve(ir.f, x0; autodiff=:forward).zero
+    return sign(ir.f(x0) * norm(x - x0))
+end
 
 
 # ------------------------------------------------------------------------------
