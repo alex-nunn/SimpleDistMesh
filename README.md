@@ -10,6 +10,7 @@ In keeping with this goal our implementation sacrifices performance in favor of 
 
 ## Usage
 Regions are defined by signed distance functions $d(x)$ where the boundary is given by the level set $d(x) = 0$, the function is negative in the interior of the region, and positive outside. For example, the signed distance function $d(x)$ for a disk of radius $1$ is given by,
+
 $$ d(x) = \| x \|_2 - 1.$$ 
 
 For convenience, we have defined the types `Circle`, `Rect`, `Polygon` and `ImplicitRegion` which allow the users to quickly regions. The regions defined by these signed distance functions can also be combined using the set operations; `union`, `intersection` and `setdiff`. See examples in the documentation for more details.
